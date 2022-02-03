@@ -1,4 +1,3 @@
--- allows "string literals" to be Text
 {-# LANGUAGE OverloadedStrings #-}
 
 module Main where
@@ -18,11 +17,17 @@ fromBot = userIsBot . messageAuthor
 goalDetected :: Message -> Bool
 goalDetected = ("objetivo" `isPrefixOf`) . toLower . messageContent
 
+helloThereDetected :: Message -> Bool
+helloThereDetected = ("hello there" `isPrefixOf`) . toLower . messageContent
+
 eventHandler :: Event -> DiscordHandler ()
 eventHandler event = case event of
-  MessageCreate m -> when (not (fromBot m) && goalDetected m) $ do
-    void $ restCall (R.CreateReaction (messageChannelId m, messageId m) "eyes")
-    void $ restCall (R.CreateMessage (messageChannelId m) "Meu objetivo é a conquista!!!")
+  MessageCreate m -> when (not (fromBot m)) $ do
+    when (goalDetected m) $ do
+      void $ restCall (R.CreateReaction (messageChannelId m, messageId m) "eyes")
+      void $ restCall (R.CreateMessage (messageChannelId m) "Meu objetivo é a conquista!!!")
+    when (helloThereDetected m) $ do
+      void $ restCall (R.CreateMessage (messageChannelId m) "General Kenobi!")
   _ -> return ()
 
 main :: IO ()
