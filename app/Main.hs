@@ -16,7 +16,7 @@ fromBot :: Message -> Bool
 fromBot = userIsBot . messageAuthor
 
 goalDetected :: Message -> Bool
-goalDetected = ("conquista" `isPrefixOf`) . toLower . messageContent
+goalDetected = ("objetivo" `isPrefixOf`) . toLower . messageContent
 
 eventHandler :: Event -> DiscordHandler ()
 eventHandler event = case event of
