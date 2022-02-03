@@ -1,6 +1,6 @@
 # nove-caudas
 
-![Inaceitável, 9Caudas](https://github.com/caiorulli/nove-caudas/tree/master/docs/images/9caudas_meme.jpg)
+![Inaceitável, 9Caudas](https://raw.githubusercontent.com/caiorulli/nove-caudas/deck/docs/images/9caudas_meme.jpg)
 
 An unacceptable discord bot.
 Work in progress.
