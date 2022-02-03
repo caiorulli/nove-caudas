@@ -1,0 +1,43 @@
+cabal-version:      3.6
+name:               nove-caudas
+version:            0.1.0.0
+synopsis:           An unnacceptable discord bot
+license:            GPL-3.0-or-later
+license-file:       LICENSE
+author:             Caio Rulli
+maintainer:         Caio Rulli
+extra-doc-files:    README.md
+
+source-repository head
+  type:             git
+  location:         https://github.com/caiorulli/nove-caudas
+
+
+common shared-properties
+    build-depends:
+        base  ^>=4.14.3.0
+      , text
+      , discord-haskell
+
+library
+    import:          shared-properties
+    exposed-modules:
+        NoveCaudas.Core
+    hs-source-dirs:  src
+
+executable nove-caudas-bot
+    import:         shared-properties
+    main-is:        Main.hs
+    hs-source-dirs: app
+    build-depends:
+        nove-caudas
+
+test-suite nove-caudas-test
+    import:         shared-properties
+    type:           exitcode-stdio-1.0
+    main-is:        Spec.hs
+    hs-source-dirs: test
+    ghc-options:    -threaded -rtsopts -with-rtsopts=-N -Wall
+    build-depends:
+        nove-caudas
+      , hspec
