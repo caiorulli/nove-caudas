@@ -2,7 +2,7 @@
 
 module Main where
 
-import Control.Monad (void, when)
+import Control.Monad (void, when, unless)
 import Data.Text (Text, isPrefixOf, toLower)
 import qualified Data.Text.IO as TIO
 import Discord
@@ -22,7 +22,7 @@ helloThereDetected = ("hello there" `isPrefixOf`) . toLower . messageContent
 
 eventHandler :: Event -> DiscordHandler ()
 eventHandler event = case event of
-  MessageCreate m -> when (not (fromBot m)) $ do
+  MessageCreate m -> unless (fromBot m) $ do
     when (goalDetected m) $ do
       void $ restCall (R.CreateReaction (messageChannelId m, messageId m) "eyes")
       void $ restCall (R.CreateMessage (messageChannelId m) "Meu objetivo é a conquista!!!")

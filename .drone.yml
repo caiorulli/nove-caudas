@@ -1,0 +1,13 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: publish
+    image: plugins/docker
+    settings:
+      username: lutecethecrab
+      password:
+        from_secret: dockerhub_password
+      repo: lutecethecrab/nove-caudas
+      tags: latest
