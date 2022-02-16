@@ -7,11 +7,7 @@ platform:
   arch: arm64
 
 steps:
-  - name: publish
-    image: plugins/docker
-    settings:
-      username: lutecethecrab
-      password:
-        from_secret: dockerhub_password
-      repo: lutecethecrab/nove-caudas
-      tags: latest
+  - name: build
+    image: rust:1.58
+    commands:
+      - cargo build

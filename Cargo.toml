@@ -1,0 +1,10 @@
+[package]
+name = "nove-caudas"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serenity = { version = "0.10", default_features = false, features = ["client", "gateway", "rustls_backend", "model"] }
+tokio = { version = "1.16.1", features = ["full"] }

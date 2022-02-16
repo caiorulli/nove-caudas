@@ -1,1 +1,0 @@
-module NoveCaudas.Core () where
