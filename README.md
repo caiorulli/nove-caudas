@@ -6,3 +6,9 @@
 
 An unacceptable discord bot.
 Work in progress.
+
+### Roadmap
+
+- [ ] Game framework: play against other bots (tic-tac-toe as a starter)
+- [ ] Game board renderer: display board in some channel
+- [ ] Integrate with [Vega](https://github.com/caiorulli/vega): one bot to rule them all
